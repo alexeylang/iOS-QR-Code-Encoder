@@ -96,7 +96,7 @@
 	
 	// get image
 	CGImageRef qrCGImage = CGBitmapContextCreateImage(ctx);
-	UIImage * qrImage = [UIImage imageWithCGImage:qrCGImage];
+	UIImage * qrImage = [UIImage imageWithCGImage:qrCGImage scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationUp];
 	
 	// free memory
 	CGContextRelease(ctx);
