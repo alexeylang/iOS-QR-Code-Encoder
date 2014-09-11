@@ -90,6 +90,7 @@
     if ( backgroundColor )
     {
         CGContextSetFillColorWithColor(ctx, backgroundColor.CGColor);
+        CGContextFillRect(ctx, CGRectMake(0, 0, size, size));
     }
 	
 	CGAffineTransform translateTransform = CGAffineTransformMakeTranslation(0, -size);
