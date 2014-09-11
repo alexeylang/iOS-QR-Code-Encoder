@@ -44,7 +44,7 @@
 	
 	CGRect rectDraw = CGRectMake(0.0f, 0.0f, pixelSize, pixelSize);
 	// draw
-	CGContextSetFillColor(ctx, CGColorGetComponents(fillColor.CGColor));
+    CGContextSetFillColorWithColor(ctx, fillColor.CGColor);
 	for(int i = 0; i < width; ++i) {
 		for(int j = 0; j < width; ++j) {
 			if(*data & 1) {
@@ -60,10 +60,10 @@
 #pragma mark - public
 
 + (UIImage *)mdQRCodeForString:(NSString *)qrString size:(CGFloat)size {
-	return [self mdQRCodeForString:qrString size:size fillColor:[UIColor blackColor]];
+	return [self mdQRCodeForString:qrString size:size fillColor:[UIColor blackColor] backgroundColor:nil];
 }
 
-+ (UIImage *)mdQRCodeForString:(NSString *)qrString size:(CGFloat)imageSize fillColor:(UIColor *)fillColor {
++ (UIImage *)mdQRCodeForString:(NSString *)qrString size:(CGFloat)imageSize fillColor:(UIColor *)fillColor backgroundColor:(UIColor *)backgroundColor {
 	if (0 == [qrString length]) {
 		return nil;
 	}
@@ -86,6 +86,11 @@
 	// The constants for specifying the alpha channel information are declared with the CGImageAlphaInfo type but can be passed to this parameter safely.
 
 	CGContextRef ctx = CGBitmapContextCreate(0, size, size, 8, size * 4, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedLast);
+
+    if ( backgroundColor )
+    {
+        CGContextSetFillColorWithColor(ctx, backgroundColor.CGColor);
+    }
 	
 	CGAffineTransform translateTransform = CGAffineTransformMakeTranslation(0, -size);
 	CGAffineTransform scaleTransform = CGAffineTransformMakeScale(1, -1);

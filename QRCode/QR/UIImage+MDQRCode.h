@@ -32,7 +32,7 @@
  this depends on the 'imageSize' parameter and size of the generated QR
  */
 + (UIImage *)mdQRCodeForString:(NSString *)qrString size:(CGFloat)size;
-+ (UIImage *)mdQRCodeForString:(NSString *)qrString size:(CGFloat)size fillColor:(UIColor *)fillColor;
++ (UIImage *)mdQRCodeForString:(NSString *)qrString size:(CGFloat)imageSize fillColor:(UIColor *)fillColor backgroundColor:(UIColor *)backgroundColor;
 
 
 @end
